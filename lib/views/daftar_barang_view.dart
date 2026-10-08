@@ -105,7 +105,6 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
         title: const Text('Daftar Barang'),
         leading: Image.asset('assets/images/logo.png'),
       ),
-
       body: Column(
         children: [
           // Search
@@ -130,7 +129,7 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: DropdownButtonFormField<String>(
-              value: statusFilter,
+              initialValue: statusFilter,
               decoration: const InputDecoration(
                 labelText: 'Filter Status',
                 border: OutlineInputBorder(),
@@ -260,14 +259,14 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
                           ),
                         ),
                       ),
-
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
                           vertical: 5,
                         ),
                         decoration: BoxDecoration(
-                          color: getStatusColor(barang.status).withOpacity(0.1),
+                          color: getStatusColor(barang.status)
+                              .withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
@@ -281,31 +280,21 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 12),
-
                   Text('Resi Toko: ${barang.noResiToko}'),
-
                   const SizedBox(height: 5),
-
                   Text(
                     'Toko: ${barang.toko!.namaToko}',
                     style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
-
                   const SizedBox(height: 5),
-
                   Text(
                     'Customer: ${barang.customer!.namaCustomer}',
                     style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
-
                   const SizedBox(height: 3),
-
                   Text('No. HP: ${barang.customer!.noHp}'),
-
                   const SizedBox(height: 5),
-
                   Text(
                     'Tanggal Diterima: ${_formatTanggal(barang.tanggalDiterima)}',
                   ),

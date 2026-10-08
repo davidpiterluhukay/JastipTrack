@@ -181,7 +181,6 @@ class _TambahBarangViewState extends State<TambahBarangView> {
         leading: Image.asset('assets/images/logo.png'),
         title: const Text('Tambah Barang'),
       ),
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -212,7 +211,7 @@ class _TambahBarangViewState extends State<TambahBarangView> {
             isLoadingCustomer
                 ? const Center(child: CircularProgressIndicator())
                 : DropdownButtonFormField<Customer>(
-                    value: customerTerpilih,
+                    initialValue: customerTerpilih,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Pilih customer',
@@ -243,7 +242,7 @@ class _TambahBarangViewState extends State<TambahBarangView> {
             isLoadingToko
                 ? const Center(child: CircularProgressIndicator())
                 : DropdownButtonFormField<Toko>(
-                    value: tokoTerpilih,
+                    initialValue: tokoTerpilih,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Pilih toko',

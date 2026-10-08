@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../controllers/auth_controller.dart';
+import 'login_view.dart';
 
 class RegistrasiCustomerView extends StatefulWidget {
   const RegistrasiCustomerView({super.key});
@@ -79,11 +80,8 @@ class _RegistrasiCustomerViewState extends State<RegistrasiCustomerView> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-
             const Icon(Icons.person_add, size: 70),
-
             const SizedBox(height: 20),
-
             TextField(
               controller: namaController,
               decoration: const InputDecoration(
@@ -92,9 +90,7 @@ class _RegistrasiCustomerViewState extends State<RegistrasiCustomerView> {
                 prefixIcon: Icon(Icons.person),
               ),
             ),
-
             const SizedBox(height: 16),
-
             TextField(
               controller: noHpController,
               keyboardType: TextInputType.phone,
@@ -104,9 +100,7 @@ class _RegistrasiCustomerViewState extends State<RegistrasiCustomerView> {
                 prefixIcon: Icon(Icons.phone),
               ),
             ),
-
             const SizedBox(height: 16),
-
             TextField(
               controller: passwordController,
               obscureText: obscurePassword,
@@ -126,9 +120,7 @@ class _RegistrasiCustomerViewState extends State<RegistrasiCustomerView> {
                 ),
               ),
             ),
-
             const SizedBox(height: 24),
-
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -140,6 +132,20 @@ class _RegistrasiCustomerViewState extends State<RegistrasiCustomerView> {
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Text('Daftar'),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const LoginView(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Sudah memiliki akun? Masuk',
+                style: TextStyle(color: Color.fromARGB(255, 19, 188, 165)),
               ),
             ),
           ],

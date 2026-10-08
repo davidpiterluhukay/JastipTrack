@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'login_view.dart';
+import 'package:jastiptrack/views/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -48,7 +49,7 @@ class _SplashViewState extends State<SplashView> {
       } else {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const LoginView()),
+          MaterialPageRoute(builder: (context) => const OnboardingView()),
         );
       }
     });
@@ -60,7 +61,7 @@ class _SplashViewState extends State<SplashView> {
     sy = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: sx * 90 / 100,
           height: sy * 80 / 100,
           child: Column(
@@ -87,7 +88,6 @@ class _SplashViewState extends State<SplashView> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 30),
               const CircularProgressIndicator(),
             ],

@@ -172,7 +172,7 @@ class _TambahPengirimanKargoViewState extends State<TambahPengirimanKargoView> {
               child: Column(
                 children: [
                   DropdownButtonFormField<JastipTujuan>(
-                    value: jastipTerpilih,
+                    initialValue: jastipTerpilih,
                     decoration: const InputDecoration(
                       labelText: 'Jastip Tujuan',
                       border: OutlineInputBorder(),
@@ -190,9 +190,7 @@ class _TambahPengirimanKargoViewState extends State<TambahPengirimanKargoView> {
                       });
                     },
                   ),
-
                   const SizedBox(height: 16),
-
                   TextField(
                     controller: noResiController,
                     decoration: const InputDecoration(
@@ -202,9 +200,7 @@ class _TambahPengirimanKargoViewState extends State<TambahPengirimanKargoView> {
                       prefixIcon: Icon(Icons.local_shipping),
                     ),
                   ),
-
                   const SizedBox(height: 16),
-
                   InkWell(
                     onTap: _pilihTanggal,
                     child: InputDecorator(
@@ -216,9 +212,7 @@ class _TambahPengirimanKargoViewState extends State<TambahPengirimanKargoView> {
                       child: Text(_formatTanggalTampilan(tanggalKirim)),
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(

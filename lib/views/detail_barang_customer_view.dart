@@ -100,9 +100,7 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
                 'Informasi Pengiriman Kargo',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-
               const SizedBox(height: 16),
-
               const Row(
                 children: [
                   Icon(Icons.info_outline, color: Colors.grey),
@@ -128,22 +126,16 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
               'Informasi Pengiriman Kargo',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-
             const SizedBox(height: 16),
-
             _buildInfo('No. Resi Kargo', kargo.noResiKargo),
-
             _buildInfo('Tanggal Kirim', _formatTanggal(kargo.tanggalKirim)),
-
             _buildInfo(
               'Tanggal Tiba',
               kargo.tanggalTiba != null
                   ? _formatTanggal(kargo.tanggalTiba!)
                   : 'Belum tiba',
             ),
-
             _buildInfo('Jastip Tujuan', kargo.namaJastip),
-
             _buildInfo('Alamat', kargo.alamatJastip),
           ],
         ),
@@ -171,9 +163,7 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
               'Status Perjalanan Barang',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-
             const SizedBox(height: 20),
-
             ...List.generate(statuses.length, (index) {
               final sudahLewat = index <= currentIndex;
               final terakhir = index == statuses.length - 1;
@@ -189,22 +179,18 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
                             : Icons.radio_button_unchecked,
                         size: 24,
                       ),
-
-                      if (!terakhir) Container(width: 2, height: 40),
+                      if (!terakhir) SizedBox(width: 2, height: 40),
                     ],
                   ),
-
                   const SizedBox(width: 12),
-
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 2, bottom: 16),
                       child: Text(
                         statuses[index],
                         style: TextStyle(
-                          fontWeight: sudahLewat
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                          fontWeight:
+                              sudahLewat ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
                     ),
@@ -254,11 +240,8 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
         children: [
           _buildStatusCard(data.status),
           const SizedBox(height: 16),
-
           _buildTimeline(data.status),
-
           const SizedBox(height: 16),
-
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -269,27 +252,20 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
                     'Informasi Barang',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-
                   const SizedBox(height: 16),
-
                   _buildInfo('No. Invoice', data.noInvoice),
-
                   _buildInfo('No. Resi Toko', data.noResiToko),
-
                   _buildInfo('Nama Toko', data.namaToko),
-
                   _buildInfo(
                     'Tanggal Diterima',
                     _formatTanggal(data.tanggalDiterima),
                   ),
-
                   _buildInfo('Status', data.status),
                 ],
               ),
             ),
           ),
           const SizedBox(height: 12),
-
           _buildKargoSection(data),
         ],
       ),
@@ -303,13 +279,9 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
         child: Column(
           children: [
             const Icon(Icons.local_shipping, size: 50),
-
             const SizedBox(height: 10),
-
             const Text('Status Barang', style: TextStyle(fontSize: 16)),
-
             const SizedBox(height: 8),
-
             Text(
               status,
               textAlign: TextAlign.center,
@@ -334,7 +306,6 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-
           Expanded(child: Text(value)),
         ],
       ),
