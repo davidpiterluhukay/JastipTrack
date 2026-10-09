@@ -76,94 +76,146 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      resizeToAvoidBottomInset: true,
+      body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 240,
-              height: 50,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/logo2.png'),
+              padding: const EdgeInsets.only(top: 40, bottom: 20),
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/images/logo2.png',
+                width: 240,
+                height: 50,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo3.png',
+                  width: 150,
+                  height: 220,
                   fit: BoxFit.fill,
                 ),
               ),
             ),
             Container(
-              width: 150,
-              height: 220,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/logo3.png'),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: noHpController,
-              keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
-                labelText: 'No HP',
-                border: OutlineInputBorder(),
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-            TextField(
-              controller: passwordController,
-              obscureText: obscurePassword,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: const OutlineInputBorder(),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    obscurePassword ? Icons.visibility : Icons.visibility_off,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      obscurePassword = !obscurePassword;
-                    });
-                  },
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-            SizedBox(
-              width: double.infinity,
-              height: 40,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 19, 188, 165),
-                ),
-                onPressed: isLoading ? null : login,
-                child: isLoading
-                    ? const CircularProgressIndicator()
-                    : const Text(
-                        'LOGIN',
-                        style: TextStyle(color: Colors.white),
+              padding: const EdgeInsets.only(bottom: 30, top: 10),
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: 312, // Keeps everything perfectly uniform at 312px
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Input Nomor HP
+                    TextField(
+                      controller: noHpController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        labelText: 'No HP',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).primaryColor,
+                            width: 2.0,
+                          ),
+                        ),
                       ),
-              ),
-            ),
-            const SizedBox(height: 8),
+                    ),
 
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const RegistrasiCustomerView(),
-                  ),
-                );
-              },
-              child: const Text(
-                'Belum punya akun? Daftar',
-                style: TextStyle(color: Color.fromARGB(255, 19, 188, 165)),
+                    const SizedBox(height: 16),
+
+                    TextField(
+                      controller: passwordController,
+                      obscureText: obscurePassword,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).primaryColor,
+                            width: 2.0,
+                          ),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            obscurePassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              obscurePassword = !obscurePassword;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    ElevatedButton(
+                      onPressed: isLoading ? null : login,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF5FA6F4),
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        textStyle: const TextStyle(fontSize: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: isLoading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            )
+                          : const Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Tombol Registrasi
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const RegistrasiCustomerView(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Belum punya akun? Daftar',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Poppins',
+                          color: Color.fromARGB(255, 19, 188, 165),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

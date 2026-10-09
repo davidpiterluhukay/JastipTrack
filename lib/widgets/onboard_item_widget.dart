@@ -11,13 +11,11 @@ class OnboardItemWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Image.asset(item.image),
         Image.asset(
           item.image,
           height: 444,
           fit: BoxFit.fill,
         ),
-        //SizedBox(height: 20),
         Text(
           item.title,
           textAlign: TextAlign.center,

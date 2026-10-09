@@ -50,7 +50,6 @@ class _OnboardingViewState extends State<OnboardingView> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => OnboardingEndView()),
       );
-      // Handle the last page action, e.g., navigate to another screen
     }
   }
 
