@@ -163,7 +163,12 @@ class _TambahPengirimanKargoViewState extends State<TambahPengirimanKargoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tambah Pengiriman Kargo'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

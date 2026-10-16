@@ -159,7 +159,12 @@ class _DetailPengirimanKargoViewState extends State<DetailPengirimanKargoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Pengiriman Kargo'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: _buildBody(),
     );

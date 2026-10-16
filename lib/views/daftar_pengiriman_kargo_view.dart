@@ -98,7 +98,12 @@ class _DaftarPengirimanKargoViewState extends State<DaftarPengirimanKargoView> {
       ),
       appBar: AppBar(
         title: const Text('Pengiriman Kargo'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
 
       body: RefreshIndicator(onRefresh: _loadKargo, child: _buildBody()),

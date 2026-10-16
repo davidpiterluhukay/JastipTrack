@@ -82,7 +82,12 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Barang'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: _buildBody(),
     );
@@ -189,8 +194,9 @@ class _DetailBarangCustomerViewState extends State<DetailBarangCustomerView> {
                       child: Text(
                         statuses[index],
                         style: TextStyle(
-                          fontWeight:
-                              sudahLewat ? FontWeight.bold : FontWeight.normal,
+                          fontWeight: sudahLewat
+                              ? FontWeight.bold
+                              : FontWeight.normal,
                         ),
                       ),
                     ),

@@ -178,7 +178,12 @@ class _TambahBarangViewState extends State<TambahBarangView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text('Tambah Barang'),
       ),
       body: SingleChildScrollView(

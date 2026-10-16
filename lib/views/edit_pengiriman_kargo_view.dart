@@ -130,7 +130,12 @@ class _EditPengirimanKargoViewState extends State<EditPengirimanKargoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Pengiriman Kargo'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

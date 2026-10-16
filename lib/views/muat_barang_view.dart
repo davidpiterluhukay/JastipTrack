@@ -91,7 +91,12 @@ class _MuatBarangViewState extends State<MuatBarangView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Muat Barang : ${widget.kargo.noResiKargo}'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

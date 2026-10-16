@@ -103,8 +103,14 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Daftar Barang'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
+
       body: Column(
         children: [
           // Search
@@ -265,8 +271,9 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
                           vertical: 5,
                         ),
                         decoration: BoxDecoration(
-                          color: getStatusColor(barang.status)
-                              .withValues(alpha: 0.1),
+                          color: getStatusColor(
+                            barang.status,
+                          ).withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(

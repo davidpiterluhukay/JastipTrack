@@ -102,7 +102,12 @@ class _DaftarTokoViewState extends State<DaftarTokoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Daftar Toko'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
 
       body: RefreshIndicator(onRefresh: _loadToko, child: _buildBody()),

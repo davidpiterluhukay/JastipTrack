@@ -64,7 +64,12 @@ class _TambahTokoViewState extends State<TambahTokoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tambah Toko'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

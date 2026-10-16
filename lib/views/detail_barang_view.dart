@@ -312,7 +312,12 @@ class _DetailBarangViewState extends State<DetailBarangView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Barang'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

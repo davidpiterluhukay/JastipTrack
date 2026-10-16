@@ -74,7 +74,12 @@ class _EditTokoViewState extends State<EditTokoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Toko'),
-        leading: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
