@@ -93,9 +93,9 @@ class _LoginViewState extends State<LoginView> {
             Expanded(
               child: Center(
                 child: Image.asset(
-                  'assets/images/logo3.png',
+                  'assets/images/ilustration2.png',
                   width: 150,
-                  height: 220,
+                  // height: 220,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -178,8 +178,9 @@ class _LoginViewState extends State<LoginView> {
                               height: 20,
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white,
+                                ),
                               ),
                             )
                           : const Text(
