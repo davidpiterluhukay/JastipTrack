@@ -136,7 +136,6 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
             children: [
               _buildGradientHeader(),
               _buildSearchAndDropdownSection(),
-              _buildHorizontalCapsuleFilter(),
               Expanded(
                 child: RefreshIndicator(
                   color: const Color(0xFF0EA5E9),
@@ -146,6 +145,7 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
               ),
             ],
           ),
+
           _buildFloatingActionButton(),
         ],
       ),
@@ -211,6 +211,7 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       child: Column(
         children: [
+          SizedBox(height: 12),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -252,9 +253,10 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
               borderRadius: BorderRadius.circular(16),
               border: Border.all(color: Colors.grey.shade200),
             ),
+
             child: DropdownButtonHideUnderline(
               child: DropdownButtonFormField<String>(
-                value: statusFilter,
+                initialValue: statusFilter,
                 decoration: InputDecoration(
                   labelText: 'FILTER STATUS',
                   labelStyle: TextStyle(
@@ -294,62 +296,21 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHorizontalCapsuleFilter() {
-    final filters = [
-      {'label': 'Semua', 'value': ''},
-      {'label': 'Kargo', 'value': 'Dikirim via Kargo'},
-      {'label': 'Tiba Jastip', 'value': 'Tiba di Jastip Tujuan'},
-      {'label': 'Diterima', 'value': 'Diterima Jastip'},
-    ];
-    return Container(
-      height: 38,
-      margin: const EdgeInsets.symmetric(vertical: 16),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        itemCount: filters.length,
-        itemBuilder: (context, index) {
-          final filter = filters[index];
-          final isSelected = statusFilter == filter['value'];
-          final count = _countStatus(filter['value']!);
-          return Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: InkWell(
-              onTap: () {
-                setState(() => statusFilter = filter['value']!);
-                loadBarang();
-              },
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: isSelected ? const Color(0xFF0F172A) : Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: isSelected
-                        ? Colors.transparent
-                        : Colors.grey.shade200,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    '${filter['label']} ($count)',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: isSelected ? Colors.white : Colors.grey.shade700,
-                    ),
-                  ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: Text(
+                'Total Barang: ${_countStatus(statusFilter)}',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF334155),
                 ),
               ),
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
@@ -448,6 +409,7 @@ class _DaftarBarangViewState extends State<DaftarBarangView> {
               );
               if (result == true) await loadBarang();
             },
+
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
